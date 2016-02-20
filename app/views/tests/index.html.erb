@@ -6,7 +6,7 @@
     <th>Название</th>
     <th>Ссылка</th>
     <th>Вопросы</th>
-    <th>Ответы</th>
+    <th>Результаты</th>
     <th style="width:250px;"> Действия </th>
   </tr>
 
@@ -14,8 +14,8 @@
       <tr>
         <td><%= link_to test.name, test_path(test)  %></td>
         <td> Link </td>
-        <td> Question </td>
-        <td> Answer </td>
+        <td> <%= test.questions.count %> </td>
+        <td> Results </td>
         <td>
           <%= link_to edit_test_path(test), class: 'btn btn-warning btn-xs' do %>
               Редактировать

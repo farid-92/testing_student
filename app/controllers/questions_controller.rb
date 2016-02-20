@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
     @test = Test.find(params[:test_id])
     @question = Question.find(params[:id])
     @answers = @question.answers
+    @counter = 1
   end
 
   def new
