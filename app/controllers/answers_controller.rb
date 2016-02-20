@@ -1,11 +1,15 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
+  add_breadcrumb "Главная", :root_path
 
 
   def new
     @test = Test.find(params[:test_id])
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build
+    add_breadcrumb @test.name, test_path(@test)
+    add_breadcrumb @question.content, test_question_path(@test,@question)
+    add_breadcrumb "Новый ответ"
 
   end
 
@@ -26,6 +30,9 @@ class AnswersController < ApplicationController
     @test = Test.find(params[:test_id])
     @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
+    add_breadcrumb @test.name, test_path(@test)
+    add_breadcrumb @question.content, test_question_path(@test,@question)
+    add_breadcrumb "Редактировать ответ"
   end
 
   def update

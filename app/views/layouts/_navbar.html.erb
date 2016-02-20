@@ -11,13 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse">
-      <% if user_signed_in? %>
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to 'Тесты', tests_path %>
-          </li>
-        </ul>
-      <% end %>
+
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
             <p class="navbar-text">

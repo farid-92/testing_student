@@ -47,3 +47,5 @@ end
 gem 'devise'
 
 gem 'bootstrap-sass'
+
+gem 'breadcrumbs_on_rails'

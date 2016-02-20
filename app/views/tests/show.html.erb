@@ -1,3 +1,4 @@
+<h1>Test "<%= @test.name %>"</h1>
 
 <h3>
   Описание: <%= @test.description %>
@@ -10,7 +11,7 @@
   <tr>
     <th>Вопрос</th>
     <th>Ответов</th>
-    <th style="width:250px;"> Действия </th>
+    <th style="width: 330px;"> Действия </th>
   </tr>
 
   <% @questions.each do |question| %>
@@ -18,6 +19,10 @@
         <td><%= link_to question.content, test_question_path(@test.id, question.id)  %></td>
         <td> <%= question.answers.count %> </td>
         <td>
+          <%= link_to new_test_question_answer_path(@test.id, question.id), class: 'btn btn-success btn-xs' do %>
+              Добавить ответ
+              <span class="glyphicon glyphicon-plus"></span>
+          <% end %>
           <%= link_to edit_test_question_path(@test.id, question.id), class: 'btn btn-warning btn-xs' do %>
               Редактировать
               <span class="glyphicon glyphicon-edit"></span>

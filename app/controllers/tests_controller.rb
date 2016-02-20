@@ -1,5 +1,8 @@
 class TestsController < ApplicationController
   before_action :authenticate_user!
+
+  add_breadcrumb "Главная", :root_path
+
   def index
     @tests = Test.all
   end
@@ -7,10 +10,12 @@ class TestsController < ApplicationController
   def show
     @test = Test.find(params[:id])
     @questions = @test.questions
+    add_breadcrumb @test.name, test_path(@test)
   end
 
   def new
     @test = Test.new
+    add_breadcrumb 'Новый тест'
 
   end
 
@@ -27,6 +32,7 @@ class TestsController < ApplicationController
 
   def edit
     @test = Test.find(params[:id])
+    add_breadcrumb 'Редактировать тест'
   end
 
   def update

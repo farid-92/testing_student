@@ -9,8 +9,13 @@
 <body>
 <%=	 render 'layouts/navbar' %>
 
+
+
   <div class="container">
     <div class="margin-top60">
+      <ol class="breadcrumb">
+        <%= render_breadcrumbs :tag => :li, :separator => "" %>
+      </ol>
       <%= flash_messages %>
       <%= yield %>
     </div>

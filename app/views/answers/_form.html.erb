@@ -1,4 +1,4 @@
-<h1><%= yield(:button_text) %></h1>
+<h1><%= yield(:button_text) %> на вопрос '<%= @question.content  %>'</h1>
 
 <%= form_for [@test, @question, @answer] do |form| %>
 

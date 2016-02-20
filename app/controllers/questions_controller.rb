@@ -1,17 +1,23 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  def index
-  end
+
+
+  add_breadcrumb "Главная", :root_path
+
   def show
     @test = Test.find(params[:test_id])
     @question = Question.find(params[:id])
     @answers = @question.answers
     @counter = 1
+    add_breadcrumb @test.name, test_path(@test)
+    add_breadcrumb @question.content, test_question_path(@test,@question)
   end
 
   def new
     @test = Test.find(params[:test_id])
     @question = @test.questions.build
+    add_breadcrumb @test.name, test_path(@test)
+    add_breadcrumb 'Новый вопрос'
   end
 
   def create
@@ -29,6 +35,8 @@ class QuestionsController < ApplicationController
   def edit
     @test = Test.find(params[:test_id])
     @question = Question.find(params[:id])
+    add_breadcrumb @test.name, test_path(@test)
+    add_breadcrumb 'Редактировать вопрос'
   end
 
   def update
