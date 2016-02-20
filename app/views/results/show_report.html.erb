@@ -1,0 +1,10 @@
+<h2> Report for <%= @result.name + ' '+ @result.surname  %></h2>
+
+<% @questions.each do |question| %>
+    <b>Вопрос <%= @counter %>:</b> <%= question.content %> <br>
+    <% question.answers.each do |answer| %>
+        <%= radio_button :answer, question.content, id: answer.content%>
+        <%= label :answer,  answer.content %> <br>
+    <% end %>
+    <% @counter +=1 %> <br>
+<% end %>
