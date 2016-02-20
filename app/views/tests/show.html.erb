@@ -1,4 +1,35 @@
 <h1>Test "<%= @test.name %>"</h1>
 
+<%= link_to 'Добавить вопрос', new_test_question_path(@test.id), class: 'btn btn-primary ', style: 'margin-bottom: 10px' %>
 
+
+<table class="table table-striped table-bordered " >
+  <tr>
+    <th>Вопрос</th>
+    <th>Ответов</th>
+    <th style="width:250px;"> Действия </th>
+  </tr>
+
+  <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.content, test_question_path(@test.id, question.id)  %></td>
+        <td> Answers </td>
+        <td>
+          <%= link_to edit_test_question_path(@test.id, question.id), class: 'btn btn-warning btn-xs' do %>
+              Редактировать
+              <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to test_question_path(@test.id, question.id), class: 'btn btn-danger btn-xs',
+                      data: {confirm: "Вы уверены что хотите удалить: #{question.content}?"}, method: :delete do %>
+              Удалить
+              <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+<br>
 <%= link_to 'Назад', tests_path %>
