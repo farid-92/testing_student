@@ -23,3 +23,4 @@ function clearFlash() {
 var clearFlashOnReady = function () {
     setTimeout(clearFlash, 3000);
 };
+
