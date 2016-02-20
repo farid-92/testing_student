@@ -1,4 +1,8 @@
-<h1>Test "<%= @test.name %>"</h1>
+<h1>Тест "<%= @test.name %>"</h1>
+
+<h3>
+  Описание: <%= @test.description %>
+</h3>
 
 <%= link_to 'Добавить вопрос', new_test_question_path(@test.id), class: 'btn btn-primary ', style: 'margin-bottom: 10px' %>
 
