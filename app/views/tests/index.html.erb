@@ -15,7 +15,7 @@
         <td><%= link_to test.name, test_path(test)  %></td>
         <td> <%= link_to 'Ссылка', test_result_path(test.id) %> </td>
         <td> <%= test.questions.count %> </td>
-        <td><%= link_to 'Результаты', result_path(test.id)  %></td>
+        <td><%= link_to test.results.count, result_path(test.id)  %></td>
         <td>
           <%= link_to edit_test_path(test), class: 'btn btn-warning btn-xs' do %>
               Редактировать
