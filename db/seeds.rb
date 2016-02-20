@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create!(email: 'admin@gmail.com', password: '12345678')
+
+
+  test = Test.create!(name: 'Ruby on Rails cw#1')
+
+question1 = Question.create!(content: '2 + 2',test_id: test.id)
+
+answers = []
+  3.times do
+   random = rand(10..20)
+   answers.push Answer.create!(content: random, question_id: question1.id,correct: false )
+  end
+  answers.push Answer.create!(content: 4, question_id:question1.id,correct: true )
+
