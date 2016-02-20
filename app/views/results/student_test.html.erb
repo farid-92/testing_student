@@ -1,0 +1,47 @@
+<h1><%= @test.name %></h1>
+<h3><%= @test.description %></h3>
+
+<hr>
+
+<h3>Student info</h3>
+
+<%= form_for finish_test_path do |r| %>
+    <%= r.hidden_field :test_id, value: params[:id] %>
+    <div class="form-group">
+      <%= r.label :name,'Имя', class: 'col-sm-2 control-label' %>
+      <div class="form-inline">
+        <%= r.text_field :name, placeholder: 'Имя', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= r.label :surname,'Фамилия', class: 'col-sm-2 control-label' %>
+      <div class="form-inline">
+        <%= r.text_field :surname, placeholder: 'Фамилия', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group ">
+      <%= r.label :group,'Группа', class: 'col-sm-2 control-label' %>
+      <div class="form-inline">
+        <%= r.text_field :group, placeholder: 'Группа', class: 'form-control' %>
+      </div>
+    </div>
+
+    <hr>
+
+    <% @questions.each do |question| %>
+       <b>Вопрос <%= @counter %>:</b> <%= question.content %> <br>
+          <% question.answers.each do |answer| %>
+            <%= radio_button :answer, question.content, id: answer.content%>
+            <%= label :answer,  answer.content %> <br>
+          <% end %>
+        <% @counter +=1 %> <br>
+    <% end %>
+
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 margin-top20">
+        <%= r.submit 'Закончить тест', class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>

@@ -7,6 +7,13 @@ Rails.application.routes.draw do
       resources :answers
     end
   end
+  resources :results
+  get 'results/:id/student_test' =>  'results#student_test', as: :test_result do
+
+  end
+  get 'test_result_report/:id' =>  'results#show_report', as: :test_result_report
+  post 'results/:id/student_test' =>  'results#create', as: :finish_test
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

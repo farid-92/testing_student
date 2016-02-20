@@ -1,0 +1,25 @@
+
+<h3>Результаты для теста <%= @test.name %></h3>
+<table class="table table-striped table-bordered " >
+  <tr>
+    <th>Студент</th>
+    <th>Результат</th>
+    <th>Смотреть отчет</th>
+    <th style="width:250px;"> Действия </th>
+  </tr>
+
+  <% @results.each do |result| %>
+      <tr>
+        <td><%= result.student %></td>
+        <td> Link </td>
+        <td> <%= link_to 'Результаты', test_result_report_path(result.id) %> </td>
+        <td>
+          <%= link_to result_path(result), class: 'btn btn-danger btn-xs',
+                      data: {confirm: "Вы уверены что хотите удалить: #{result.name}?"}, method: :delete do %>
+              Удалить
+              <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>
